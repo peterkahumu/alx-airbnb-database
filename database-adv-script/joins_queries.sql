@@ -17,7 +17,8 @@ SELECT
 	review.comment,
 	review.created_at
 FROM property
-LEFT JOIN Review on property.property_id = review.property_id;
+LEFT JOIN Review on property.property_id = review.property_id
+ORDER BY review.rating;
 
 -- FULL OUTER JOIN to retrieve all users and all bookings.
 SELECT
@@ -29,3 +30,4 @@ SELECT
 FROM users
 FULL OUTER JOIN booking ON users.user_id = booking.user_id
 FULL OUTER JOIN property ON property.property_id = booking.property_id;
+
