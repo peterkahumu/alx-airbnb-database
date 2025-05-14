@@ -69,10 +69,3 @@ CREATE TABLE Message (
     FOREIGN KEY (sender_id) REFERENCES "User"(user_id),
     FOREIGN KEY (recipient_id) REFERENCES "User"(user_id)
 );
-
--- INDEXING (Optional, most are already covered by PKs and FKs)
-CREATE INDEX idx_user_email ON "User"(email);
-CREATE INDEX idx_property_host ON Property(host_id);
-CREATE INDEX idx_booking_property ON Booking(property_id);
-CREATE INDEX idx_booking_user ON Booking(user_id);
-CREATE INDEX idx_payment_booking ON Payment(booking_id);
