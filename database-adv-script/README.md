@@ -108,3 +108,38 @@ GROUP BY u.first_name
 ORDER BY count DESC;
 
 ```
+
+## AGREGATIONS AND WINDOW FUNCTIONS
+### 1. Aggregations
+Example: *Write a query to find the total number of bookings made by each user, using the COUNT function and GROUP BY clause*
+
+```sql 
+--- Total Number of booking made by each user
+SELECT 
+	CONCAT(u.first_name, ' ', u.last_name) AS "NAME",
+	COUNT(*) AS "NUMBER OF BOOKINGS"
+FROM booking b
+INNER JOIN users u ON u.user_id = b.user_id
+GROUP BY "NAME"
+ORDER BY "NUMBER OF BOOKINGS" DESC;
+
+```
+
+### 2. Window Functions
+Example: *Use a window function (ROW_NUMBER, RANK) to rank properties based on the total number of bookings they have received.* 
+
+```sql
+-- Rank Properties based on the number of bookings they've recieved.
+
+SELECT 
+	RANK() OVER(ORDER BY COUNT(*) DESC) AS "RANK",
+	p.name AS "PROPERTY NAME",
+	COUNT(*)
+FROM booking b
+INNER JOIN property p ON p.property_id = b.property_id
+GROUP BY "PROPERTY NAME"
+ORDER BY count DESC;
+```
+
+
+

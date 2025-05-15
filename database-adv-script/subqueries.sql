@@ -1,22 +1,41 @@
 -- Properties where average rating is >= 4.0
-SELECT 
-	p.name AS "Property Name",
-	ROUND(AVG(r.rating), 2) as "Average Rating"
-FROM property p
-INNER JOIN review r on r.property_id = p.property_id
-WHERE (SELECT AVG(r.rating) AS "Average Rating" FROM review r WHERE r.property_id = p.property_id) >=4
-GROUP BY p.name
-ORDER BY "Average Rating" DESC;
+SELECT
+	P.NAME AS "Property Name",
+	ROUND(AVG(R.RATING), 2) AS "Average Rating"
+FROM
+	PROPERTY P
+	INNER JOIN REVIEW R ON R.PROPERTY_ID = P.PROPERTY_ID
+WHERE
+	(
+		SELECT
+			AVG(R.RATING) AS "Average Rating"
+		FROM
+			REVIEW R
+		WHERE
+			R.PROPERTY_ID = P.PROPERTY_ID
+	) >= 4
+GROUP BY
+	P.NAME
+ORDER BY
+	"Average Rating" DESC;
 
 -- Users with more than 3 bookings
-SELECT 
-	u.first_name,
+SELECT
+	U.FIRST_NAME,
 	COUNT(*)
-FROM booking b
-INNER JOIN users u ON u.user_id = b.user_id
-WHERE (
-	SELECT  COUNT(*) FROM  booking b
-	WHERE b.user_id = u.user_id
-) >= 4
-GROUP BY u.first_name
-ORDER BY count DESC;
+FROM
+	BOOKING B
+	INNER JOIN USERS U ON U.USER_ID = B.USER_ID
+WHERE
+	(
+		SELECT
+			COUNT(*)
+		FROM
+			BOOKING B
+		WHERE
+			B.USER_ID = U.USER_ID
+	) >= 4
+GROUP BY
+	U.FIRST_NAME
+ORDER BY
+	COUNT DESC;
