@@ -12,8 +12,19 @@ ORDER BY "NUMBER OF BOOKINGS" DESC;
 SELECT 
 	RANK() OVER(ORDER BY COUNT(*) DESC) AS "RANK",
 	p.name AS "PROPERTY NAME",
-	COUNT(*)
+	COUNT(*) AS "TOTAL BOOKINGS"
 FROM booking b
 INNER JOIN property p ON p.property_id = b.property_id
 GROUP BY "PROPERTY NAME"
-ORDER BY count DESC;
+ORDER BY "TOTAL BOOKINGS" DESC;
+
+-- Provide Row Number for the properties based on number of bookings.
+SELECT 
+	ROW_NUMBER() OVER(ORDER BY COUNT(*) DESC) AS "ROW NUMBER",
+	p.name AS "PROPERTY NAME",
+	COUNT(*) AS "TOTAL BOOKINGS"
+FROM booking b
+INNER JOIN property p ON p.property_id = b.property_id
+GROUP BY p.name
+ORDER BY "TOTAL BOOKINGS" DESC;
+	

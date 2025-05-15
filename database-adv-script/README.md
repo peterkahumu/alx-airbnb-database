@@ -127,7 +127,11 @@ ORDER BY "NUMBER OF BOOKINGS" DESC;
 
 ### 2. Window Functions
 Example: *Use a window function (ROW_NUMBER, RANK) to rank properties based on the total number of bookings they have received.* 
+- RANK()
 
+Allow the user to create a hierarchy scale for the data.
+
+Example1: 
 ```sql
 -- Rank Properties based on the number of bookings they've recieved.
 
@@ -141,5 +145,24 @@ GROUP BY "PROPERTY NAME"
 ORDER BY count DESC;
 ```
 
+- ROW_NUMBER()
+Generates a unique number for each row in a result set, starting from one for the first row.
+Key features are:
+	- Sequential Numbering
+	- Partitioning 
+	- Sorting
+
+Example:
+```sql
+-- Provide Row Number for the properties based on number of bookings.
+SELECT 
+	ROW_NUMBER() OVER(ORDER BY COUNT(*) DESC) AS "ROW NUMBER",
+	p.name AS "PROPERTY NAME",
+	COUNT(*) AS "TOTAL BOOKINGS"
+FROM booking b
+INNER JOIN property p ON p.property_id = b.property_id
+GROUP BY p.name
+ORDER BY "TOTAL BOOKINGS" DESC;
+```
 
 
