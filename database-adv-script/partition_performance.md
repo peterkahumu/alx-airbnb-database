@@ -1,5 +1,7 @@
 # Partitioning
 
+[Click here to access the sql script](partitioning.sql)
+
 For this exercise, I used the `booking` table, which holds the records for all bookings made in the system. 
 
 I ran an initial sql command to list all the records in the bookings table as shown  below:

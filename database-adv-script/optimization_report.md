@@ -1,5 +1,7 @@
 # Optimizing Complex Queries
 
+[click here to access the sql script](perfomance.sql)
+
 The goal of this exercise is to refactor complex queries to improve performance. 
 
 Below is the initial query that I wrote, to come up with all bookings along with the user_details, property details and payment details.

@@ -1,5 +1,7 @@
 I have used the POSSTGRESQL Explain tool for this exercise.
 
+[Click here to access the sql script](database_index.sql)
+
 # QUERY ONE: GET ALL BOOKINGS MADE BY EACH USER
 
 

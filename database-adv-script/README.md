@@ -2,6 +2,8 @@
 
 ## JOINS
 
+[Click here to accesss the sql script](joins_queries.sql)
+
 ### 1. Inner Join
 
 Selects all rows from both tables as long as the condition is satisfied.
@@ -62,6 +64,8 @@ FULL OUTER JOIN property ON property.property_id = booking.property_id;
 
 ## SUBQUERIES
 
+[Click here to access the sql script](subqueries.sql)
+
 - Simply a query nested within another query, allowing users to perform operations that depend on the results of *another query*.
 -  A query *embedded* within another query.
 
@@ -110,6 +114,9 @@ ORDER BY count DESC;
 ```
 
 ## AGREGATIONS AND WINDOW FUNCTIONS
+
+[Click here to access the sql script](aggregations_and_window_functions.sql)
+
 ### 1. Aggregations
 Example: *Write a query to find the total number of bookings made by each user, using the COUNT function and GROUP BY clause*
 
@@ -146,6 +153,9 @@ ORDER BY count DESC;
 ```
 
 - ROW_NUMBER()
+
+
+
 Generates a unique number for each row in a result set, starting from one for the first row.
 Key features are:
 	- Sequential Numbering
@@ -165,4 +175,8 @@ GROUP BY p.name
 ORDER BY "TOTAL BOOKINGS" DESC;
 ```
 
+## Additional tasks.
 
+1. [Optimization](index_performance.md)
+2. [Optimized complex Queries](optimization_report.md)
+3. [Partitioning](partition_performance.md)
